@@ -19,7 +19,7 @@ public class GameScene: SKScene {
     var squareArea: SKSpriteNode!
     var hexagonArea: SKSpriteNode!
     
-    var selectedCircle: SKSpriteNode?
+    var selectedShape: SKSpriteNode?
     var musicPlayers: [NSSound] = []
     var musicNames = ["blueCircleSound","blueHexagonSound","blueSquareSound","orangeCircleSound","orangeHexagonSound","orangeSquareSound", "yellowCircleSound", "yellowHexagonSound", "yellowSquareSound"]
     
@@ -73,70 +73,87 @@ public class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) { // funcao para arrastar as formas //
         if blueCircle.contains(pos){
-            selectedCircle = blueCircle
+            selectedShape = blueCircle
         }
         if blueHexagon.contains(pos){
-            selectedCircle = blueHexagon
+            selectedShape = blueHexagon
         }
         if blueSquare.contains(pos){
-            selectedCircle = blueSquare
+            selectedShape = blueSquare
         }
         if orangeCircle.contains(pos) {
-            selectedCircle = orangeCircle
+            selectedShape = orangeCircle
             
         }
         if orangeHexagon.contains(pos) {
-            selectedCircle = orangeHexagon
+            selectedShape = orangeHexagon
         }
         if orangeSquare.contains(pos) {
-            selectedCircle = orangeSquare
+            selectedShape = orangeSquare
         }
         if yellowCircle.contains(pos) {
-            selectedCircle = yellowCircle
+            selectedShape = yellowCircle
         }
         if yellowHexagon.contains(pos) {
-            selectedCircle = yellowHexagon
+            selectedShape = yellowHexagon
         }
         if yellowSquare.contains(pos) {
-            selectedCircle = yellowSquare
+            selectedShape = yellowSquare
         }
         
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        if selectedCircle != nil{
-            selectedCircle?.position = pos
+        if selectedShape != nil{
+            selectedShape?.position = pos
         }
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        guard let selectedCircle = selectedCircle else {
+        guard let selectedShape = selectedShape else {
             return
         
         }
-        if selectedCircle.name!.contains("Circle"){
         
-            if circleArea.intersects(selectedCircle){
-                selectedCircle.position = circleArea.position
-            }
-        }
-        if selectedCircle.name!.contains("Square"){
-        
-            if squareArea.intersects(selectedCircle){
-                selectedCircle.position = squareArea.position
-            }
-        }
-        if selectedCircle.name!.contains("Hexagon"){
-        
-            if hexagonArea.intersects(selectedCircle){
-                selectedCircle.position = hexagonArea.position
-            }
-        }
-        let musicName = getMusicName(from: selectedCircle.name!)
+        let musicName = getMusicName(from: selectedShape.name!)
         let playerIndex = musicNames.firstIndex(of: musicName)
         let player = musicPlayers [playerIndex!]
-        player.volume = 0.3
-        self.selectedCircle = nil
+        
+        if selectedShape.name!.contains("Circle"){
+        
+            if circleArea.intersects(selectedShape){
+                selectedShape.position = circleArea.position
+                player.volume = 0.3
+            }
+            
+            else {
+                player.volume = 0
+            }
+
+        }
+        if selectedShape.name!.contains("Square"){
+        
+            if squareArea.intersects(selectedShape){
+                selectedShape.position = squareArea.position
+                player.volume = 0.3
+            }
+            
+            else {
+                player.volume = 0
+            }
+        }
+        if selectedShape.name!.contains("Hexagon"){
+        
+            if hexagonArea.intersects(selectedShape){
+                selectedShape.position = hexagonArea.position
+                player.volume = 0.3
+            }
+            
+            else {
+                player.volume = 0
+            }
+        }
+        self.selectedShape = nil
     }
     
     
@@ -164,8 +181,10 @@ public class GameScene: SKScene {
               if nodeName.contains(color) {
                 return color + shape + "Sound"
               }
+            }
+          }
+        }
            
         return ""
     }
-          }
-        
+}
