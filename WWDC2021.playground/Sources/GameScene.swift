@@ -123,7 +123,7 @@ public class GameScene: SKScene {
         
             if circleArea.intersects(selectedShape){
                 selectedShape.position = circleArea.position
-                player.volume = 0.3
+                player.volume = 0.1
             }
             
             else {
@@ -135,7 +135,7 @@ public class GameScene: SKScene {
         
             if squareArea.intersects(selectedShape){
                 selectedShape.position = squareArea.position
-                player.volume = 0.3
+                player.volume = 0.1
             }
             
             else {
@@ -146,7 +146,7 @@ public class GameScene: SKScene {
         
             if hexagonArea.intersects(selectedShape){
                 selectedShape.position = hexagonArea.position
-                player.volume = 0.3
+                player.volume = 0.1
             }
             
             else {

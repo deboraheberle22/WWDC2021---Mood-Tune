@@ -3,7 +3,7 @@ import PlaygroundSupport
 import SpriteKit
 
 // Load the SKScene from 'GameScene.sks'
-let sceneView = SKView(frame: CGRect(x:0 , y:0, width: 900, height: 1030))
+let sceneView = SKView(frame: CGRect(x:0 , y:0, width: 900, height: 1000))
 if let scene = GameScene(fileNamed: "GameScene") {
     // Set the scale mode to scale to fit the window
     scene.scaleMode = .aspectFill
