@@ -3,13 +3,13 @@ import SpriteKit
 import AVFoundation
 import AppKit
 
-public class IntroScene: SKScene {
+public class IntroScene2: SKScene {
     
     var greenCharacter : SKSpriteNode!
     var redCharacter : SKSpriteNode!
     var purpleCharacter : SKSpriteNode!
     
-    var nextButtom : SKSpriteNode!
+    var startButtom : SKSpriteNode!
     var greenCharacterBaloon : SKSpriteNode!
     
     override public func didMove(to view: SKView) {
@@ -17,7 +17,7 @@ public class IntroScene: SKScene {
         greenCharacter = (self.childNode(withName: "greenCharacter") as! SKSpriteNode)
         redCharacter = (self.childNode(withName: "greenCharacter") as! SKSpriteNode)
         purpleCharacter = (self.childNode(withName: "greenCharacter") as! SKSpriteNode)
-        nextButtom = (self.childNode(withName: "nextButtom") as! SKSpriteNode)
+        startButtom = (self.childNode(withName: "startButtom") as! SKSpriteNode)
         greenCharacterBaloon = (self.childNode(withName: "greenCharacter") as! SKSpriteNode)
         
     }
@@ -32,9 +32,9 @@ public class IntroScene: SKScene {
 
       
     func touchDown(atPoint pos : CGPoint) {
-        if nextButtom.contains(pos) {
+        if startButtom.contains(pos) {
             
-            if let scene = IntroScene2(fileNamed: "IntroScene2") {
+            if let scene = GameScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFit
                 
@@ -49,15 +49,4 @@ public class IntroScene: SKScene {
     }
         
 }
-    
-        
-        
-            
-        
-        
-    
-    
-    
-
-
 
