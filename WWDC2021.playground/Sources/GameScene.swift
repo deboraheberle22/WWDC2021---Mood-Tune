@@ -273,17 +273,29 @@ public class GameScene: SKScene {
         
        }
         if color1 && color2 && color3 {
+            
             background.texture = SKTexture (imageNamed: "backGroundBlue2")
             greenCharacter.texture = SKTexture (imageNamed: "greenCharacter2")
             firstBallon.alpha = 0
             finalBaloon.alpha = 1
             
+            
+            
         }
         
-        if circleArea.position != blueCircle.position  || squareArea.position != blueSquare.position || hexagonArea != blueHexagon {
+        if fullCircle == true && fullSquare == true && fullHexagon == true {
             
-           // firstBallon.alpha = 1
-            
+            if !(color1 && color2 && color3) {
+                
+                firstBallon.alpha = 1
+                
+            }
+            else {
+                
+                firstBallon.alpha = 0
+                
+            }
+                                   
         }
         
         self.selectedShape = nil
